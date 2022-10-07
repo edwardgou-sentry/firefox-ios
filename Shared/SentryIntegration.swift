@@ -56,11 +56,6 @@ public class SentryIntegration: SentryProtocol {
         // Setup should only be called once
         guard !enabled else { return }
 
-        if DeviceInfo.isSimulator() {
-            Logger.browserLogger.debug("Not enabling Sentry; Running in Simulator")
-            return
-        }
-
         if !sendUsageData {
             Logger.browserLogger.debug("Not enabling Sentry; Not enabled by user choice")
             return
@@ -73,6 +68,7 @@ public class SentryIntegration: SentryProtocol {
         }
 
         let bundle = AppInfo.applicationBundle
+        Logger.browserLogger.debug(bundle.object(forInfoDictionaryKey: SentryDSNKey) as? String)
         guard let dsn = bundle.object(forInfoDictionaryKey: SentryDSNKey) as? String, !dsn.isEmpty else {
             Logger.browserLogger.debug("Not enabling Sentry; Not configured in Info.plist")
             return
@@ -96,6 +92,7 @@ public class SentryIntegration: SentryProtocol {
                 }
                 return crumb
             }
+            options.tracesSampleRate = 1.0
         }
         enabled = true
 

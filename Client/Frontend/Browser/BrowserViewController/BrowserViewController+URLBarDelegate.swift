@@ -80,6 +80,8 @@ extension BrowserViewController: URLBarDelegate {
     }
 
     func urlBarDidPressQRButton(_ urlBar: URLBarView) {
+        let error = NSError(domain: "SentryQRButtonError", code: 0, userInfo: nil)
+        SentryIntegration.shared.captureError(error: error)
         let qrCodeViewController = QRCodeViewController()
         qrCodeViewController.qrCodeDelegate = self
         let controller = QRCodeNavigationController(rootViewController: qrCodeViewController)
