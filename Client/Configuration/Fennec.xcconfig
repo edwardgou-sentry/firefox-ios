@@ -15,3 +15,4 @@ CODE_SIGN_ENTITLEMENTS = Client/Entitlements/FennecApplication.entitlements
 OTHER_SWIFT_FLAGS = $(OTHER_SWIFT_FLAGS_common) -DMOZ_CHANNEL_FENNEC
 MOZ_INTERNAL_URL_SCHEME = fennec
 OTHER_LDFLAGS = -ObjC -lxml2 -fprofile-instr-generate
+SENTRY_CLOUD_DSN = https:/$()/e048a001ec0549e7aded7cc58d6c41cc@o1.ingest.sentry.io/4503944114667520

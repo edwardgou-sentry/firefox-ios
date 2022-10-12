@@ -93,6 +93,7 @@ public class SentryIntegration: SentryProtocol {
                 return crumb
             }
             options.tracesSampleRate = 1.0
+            options.attachScreenshot = true
         }
         enabled = true
 
